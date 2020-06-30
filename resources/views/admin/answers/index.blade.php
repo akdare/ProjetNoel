@@ -20,7 +20,9 @@
                 </div><!-- /.container-fluid -->
             </div>
             <section class="row" style="height: 100%;">
+
                 <x-letter-menu></x-letter-menu>
+                
                 <div class="col-lg-9 col-md-9 col-sm-12">
                     <div class="card bg-light" style="height: 100%;">
                         <div class="card-header mb-0">

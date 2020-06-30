@@ -73,11 +73,6 @@ Route::group(['prefix'=>'admin', 'middleware'=> 'auth'], function (){
 });
 
 
- Route::get('/links', function(){
-    Artisan::call('storage:link');
-    dd("Done");
-    });
-
 
 
 
