@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+define('STDIN',fopen("php://stdin","r"));
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
  */
-Auth::routes(['register'=>false]);
+Auth::routes(['register'=>true]);
 
 Route::get('/', function () {
     return view('home');
@@ -66,9 +68,15 @@ Route::group(['prefix'=>'admin', 'middleware'=> 'auth'], function (){
     Route::put('/utilisateurs/{user}/modification', 'UserController@update')->name('users.update');
 
     Route::delete('/utilisateurs/{user}/suppression', 'UserController@destroy')->name('users.delete');
+    
+     Route::get('/adresses/exporter', 'ReportController@exportAddresses')->name('addresses.export');
 });
 
 
+ Route::get('/links', function(){
+    Artisan::call('storage:link');
+    dd("Done");
+    });
 
 
 

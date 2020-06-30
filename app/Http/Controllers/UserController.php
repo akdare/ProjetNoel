@@ -41,11 +41,11 @@ class UserController extends Controller
             'name' => ['string', 'required'],
             'email' => ['required', 'email', 'unique:users'],
             'password' => ['string', 'required', 'min:8', 'confirmed'],
-            'role' => ['string', 'required'],
+           
             'avatar' => ['nullable', 'image', 'mimes:jpeg,jpg,png'],
         ]);
 
-        $roles = Role::pluck('name','name')->all();
+      
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -56,7 +56,7 @@ class UserController extends Controller
         if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {
             $user->addMediaFromRequest('avatar')->toMediaCollection('images');
         }
-        $user->assignRole($data['role']);
+       
 
         return redirect(route('users.index'))->with('success');
     }

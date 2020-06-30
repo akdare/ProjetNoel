@@ -10,8 +10,9 @@ class Address extends Model
 
     public function persons()
     {
-        $this->hasMany('App\Person');
+       return $this->hasMany('App\Person');
     }
+    
     public function toString()
     {
         return $this->city .", ".$this->street.", ".$this->postal_code ;

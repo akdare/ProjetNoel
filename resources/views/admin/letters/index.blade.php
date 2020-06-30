@@ -32,8 +32,8 @@
                                         <a href="{{route('letters.export')}}" class="btn btn-sm btn-outline-secondary mr-2">
                                             Imprimer <span class="fas fa-print"></span>
                                         </a>
-                                        <a href="" class="btn btn-sm btn-outline-secondary">
-                                            Télécgarger <span class="fas fa-print"></span>
+                                        <a href="{{route('addresses.export')}}" class="btn btn-sm btn-outline-secondary">
+                                            Imprimer les adresses <span class="fas fa-print"></span>
                                         </a>
                                     </div>
                                 </div>

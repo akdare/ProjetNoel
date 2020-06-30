@@ -8,21 +8,28 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Address as Address;
 use niklasravnsborg\LaravelPdf\Facades\Pdf as PDF;
-use Spatie\MediaLibrary\MediaStream as MediaStream;
+
 class ReportController extends Controller
 {
 
     public function exportAll()
     {
         $letters = Letter::all();
-        $files = [];
-        $i = 0;
+      
+        $html = '';
+    
         foreach ($letters as $letter){
-            $pdf = PDF::loadView('reports.letter', compact('letter'));
-            $files[$i++] =  $pdf->save($letter->person()->first()->lastname.'.pdf');
+        
+            $view = view('reports.letter')->with(compact('letter'));
+            $html .= $view->render().' ';
+            
         }
-        return  ;
-
+        
+          $pdf = PDF::loadHTML($html);
+          
+         return $pdf->download('lettres.pdf');
+        
+    
 
     }
 
@@ -42,7 +49,7 @@ class ReportController extends Controller
 
     public function exportAddresses(){
         $addresses = Address::all();
-        view()->share('reports.addresses', compact('addresses'));
+        //view()->share('reports.addresses', compact('addresses'));
         $pdf = PDF::loadView('reports.addresses', compact('addresses'));
         return $pdf->stream('adresses.pdf');
     }

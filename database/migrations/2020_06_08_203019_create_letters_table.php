@@ -16,6 +16,7 @@ class CreateLettersTable extends Migration
         Schema::create('letters', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+              $table->string('slug');
             $table->longText('content');
             $table->boolean('readed')->default(false);
             $table->timestamp('seen_at')->nullable();

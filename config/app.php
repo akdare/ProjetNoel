@@ -52,7 +52,7 @@ return [
     |
      */
 
-    'url'             => env('APP_URL', 'http://projetnoel.test'),
+    'url'             => env('APP_URL', 'http://apenoel.planethoster.world'),
 
     'asset_url'       => env('ASSET_URL', null),
 

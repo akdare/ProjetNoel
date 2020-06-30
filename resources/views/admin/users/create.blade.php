@@ -115,17 +115,7 @@
                             @enderror
                         </div>
 
-                        <div class="form-group">
-                            <select name="role" class="form-control">
-                                <option value="Admin">Administrateur</option>
-                                <option selected value="Agent">Agent</option>
-                            </select>
-                            @error('role')
-                            <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                            @enderror
-                        </div>
+                      
 
                         <div class="form-group">
                             <input type="file" class="form-control" id="avatar" name="avatar">

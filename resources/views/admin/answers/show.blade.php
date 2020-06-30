@@ -125,7 +125,7 @@
 @push('styles')
     <style>
         .bg-img-overlay {
-            background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url({{$answer->getFirstMediaUrl('images')}});
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url({{$answer->getFirstMediaUrl('images')}});
             background-repeat: no-repeat;
             background-position: center;
             background-size: 300px 300px;

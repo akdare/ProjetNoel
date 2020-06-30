@@ -62,6 +62,7 @@ class LetterController extends Controller
 
         $letter = Letter::create([
             'title' => $data['letter']['title'],
+            'slug' => str_replace(' ', '-', $data['letter']['title']),
             'content' => $data['letter']['content'],
             'person_id' => $person->id,
         ]);

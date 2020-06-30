@@ -67,7 +67,7 @@
                             </div>
                             <div class="col d-flex">
                                 <img src="{{$letter->getFirstMediaUrl('images')}}" alt="" width="100%">
-                                {{$letter->getFirstMediaUrl('images')}}
+                              
                             </div>
 
                         </div>
