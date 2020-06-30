@@ -40,8 +40,7 @@ class UserController extends Controller
         $data = $request->validate([
             'name' => ['string', 'required'],
             'email' => ['required', 'email', 'unique:users'],
-            'password' => ['string', 'required', 'min:8', 'confirmed'],
-           
+            'password' => ['string', 'required', 'min:8', 'confirmed'], 
             'avatar' => ['nullable', 'image', 'mimes:jpeg,jpg,png'],
         ]);
 
@@ -52,7 +51,7 @@ class UserController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        //Store Image
+        
         if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {
             $user->addMediaFromRequest('avatar')->toMediaCollection('images');
         }

@@ -91,7 +91,7 @@
                                             <label class="h2 text-muted" for="answer">Veuillez écrire votre ici <span class="fas fa-caret-down"></span></label>
                                         </div>
 
-                                            <input class="form-control" name="title" id="title" placeholder="Titre" value="{{old('title')}}">
+                    
                                         <textarea class="form-control text-justify" name="content" id="answer" cols="30" rows="40">{{old('content')}}</textarea>
                                     </div>
                                     <div class="form-group custom-file mb-3 text-center">
@@ -115,7 +115,7 @@
 
 
 @push('scripts')
-    <script async>
+    <script >
         (function () {
             $('textarea').summernote();
             @if($errors->any())
@@ -125,9 +125,8 @@
                 "                                       \n" +
                 "                                        @endforeach");
             @endif
-            @if (Session::has('success'))
-                Swal.fire('Succès', 'Reponse enregistrée avec succès !', 'success');
-            @endif
+            
+           
         })()
     </script>
 @endpush

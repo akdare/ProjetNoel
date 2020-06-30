@@ -20,9 +20,8 @@ class LetterController extends Controller
      */
     public function index()
     {
-        $letters = Letter::all();
-        $letters_count = Letter::count();
-        return view("admin.letters.index", compact(['letters', 'letters_count']))->with('i');
+        $letters = Letter::all();    
+        return view("admin.letters.index", compact(['letters']))->with('i');
     }
 
     /**
@@ -61,13 +60,13 @@ class LetterController extends Controller
         ]);
 
         $letter = Letter::create([
-            'title' => $data['letter']['title'],
-            'slug' => str_replace(' ', '-', $data['letter']['title']),
+            'title' => "Lettre de Noel : ".$person->fullname(),
+            'slug' => str_replace(' ', '-', "Lettre de Noel : ".$person->fullname()),
             'content' => $data['letter']['content'],
             'person_id' => $person->id,
         ]);
 
-        //Store Image
+        
         if ($request->hasFile('letter.image') && $request->file('letter.image')->isValid()) {
             $letter->addMediaFromRequest('letter.image')->toMediaCollection('images');
         }
@@ -106,7 +105,7 @@ class LetterController extends Controller
      */
     public function update(Request $request, Letter $letter)
     {
-        return null; //
+       //
     }
 
     /**
@@ -117,8 +116,7 @@ class LetterController extends Controller
      */
     public function destroy(Letter $letter)
     {
-        $letter->delete();
-       return redirect(route('letters.index'))->with('success'); //
+         //
     }
 
 }

@@ -42,7 +42,6 @@ class AnswerController extends Controller
         $data = $request->validate([
             'letter_id' => 'answers:unique',
             'content' => 'required',
-            'title' => 'string',
             'answer.image' => ['nullable', 'image', 'mimes:jpeg,jpg,png'],
         ]);
 
@@ -54,7 +53,7 @@ class AnswerController extends Controller
             'content' => $data['content']
         ]);
 
-        //Store Image
+     
         if ($request->hasFile('answer.image') && $request->file('answer.image')->isValid()) {
             $answer->addMediaFromRequest('answer.image')->toMediaCollection('images');
         }
@@ -102,11 +101,10 @@ class AnswerController extends Controller
 
 
         $answer->update([
-            'slug' => str_replace(' ', '-', 'Reponse à la lettre de ' . $answer->letter()->first()->person()->first()->toString() . ''),
             'content' => $data['content']
         ]);
 
-        //Store Image
+        
         if ($request->hasFile('answer.image') && $request->file('answer.image')->isValid()) {
             $answer->addMediaFromRequest('answer.image')->toMediaCollection('images');
         }

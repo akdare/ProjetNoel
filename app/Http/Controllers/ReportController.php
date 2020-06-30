@@ -12,6 +12,7 @@ use niklasravnsborg\LaravelPdf\Facades\Pdf as PDF;
 class ReportController extends Controller
 {
 
+    //Exporter toutes les lettres
     public function exportAll()
     {
         $letters = Letter::all();
@@ -29,10 +30,11 @@ class ReportController extends Controller
           
          return $pdf->download('lettres.pdf');
         
-    
-
     }
 
+
+
+    //Generer un pdf pour la lettre
     public function letterPdf(Letter $letter)
     {
         view()->share('reports.letter', compact('letter'));
@@ -40,6 +42,7 @@ class ReportController extends Controller
         return $pdf->stream('lettre.pdf');
     }
 
+ //Generer un pdf pour la reponse
     public function answerPdf(Answer $answer)
     {
         view()->share('reports.answer', compact('answer'));
@@ -47,6 +50,8 @@ class ReportController extends Controller
         return $pdf->stream('reponse.pdf');
     }
 
+
+    //Exporter toutes les adresses en pdf
     public function exportAddresses(){
         $addresses = Address::all();
         //view()->share('reports.addresses', compact('addresses'));

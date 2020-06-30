@@ -32,8 +32,7 @@ class LetterStoreRequest extends FormRequest
             'person.firstname'    => ['string', 'required', 'max:255'],
             'person.email'        => ['email', 'nullable'],
             'person.age'          => ['numeric', 'required'],
-
-            'letter.title'        => ['string', 'max:100'],
+    
             'letter.content'      => ['required'],
             'letter.image'        => ['nullable', 'image', 'mimes:jpeg,jpg,png'],
         ];

@@ -105,3 +105,15 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+
+<script type="text/javascript">
+    (function(){
+         @if (Session::has('success'))
+                Swal.fire('Succès', 'Reponse enregistrée avec succès !', 'success');
+            @endif
+        })()
+</script>
+
+@endpush
