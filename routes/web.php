@@ -14,7 +14,7 @@ define('STDIN',fopen("php://stdin","r"));
 | contains the "web" middleware group. Now create something great!
 |
  */
-Auth::routes(['register'=>true]);
+Auth::routes(['only'=>'login']);
 
 Route::get('/', function () {
     return view('home');
